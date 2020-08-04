@@ -14,3 +14,9 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+## About Me
+If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/)! Thank you!
+
+[
+    ![wangyihui's github stats](https://github-readme-stats.vercel.app/api?username=istarwyh "![wangyihui's github stats")
+](https://github.com/istarwyh)
