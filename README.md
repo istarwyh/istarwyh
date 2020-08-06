@@ -15,11 +15,11 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 ## About Me
-If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/)! Thank you!
 
-[
-    ![wangyihui's github stats](https://github-readme-stats.vercel.app/api?username=istarwyh "![wangyihui's github stats")
-](https://github.com/istarwyh)
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=istarwyh&hide=css&layout=compact)](https://github.com/anuraghazra/github-readme-stats)[![wangyihui's github stats](https://github-readme-stats.vercel.app/api?username=istarwyh "![wangyihui's github stats")](https://github.com/istarwyh)
+
+If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/)! Thank you!
 
 ## Other
 a solution for find the k samllest numbers in the array:
