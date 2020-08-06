@@ -14,6 +14,9 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+
+
+
 ## About Me
 
 
@@ -101,3 +104,8 @@ class Solution {
     }
 }
 ```
+
+<p align="center"> 
+  Visitor count<br>
+  <img src="https://profile-counter.glitch.me/istarwyh/count.svg" />
+</p>
