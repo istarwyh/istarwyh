@@ -24,84 +24,66 @@ Here are some ideas to get you started:
 
 If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/)! Thank you!😄
 
-## Other
-a solution for find the k smallest numbers in the array:
+## Resent Practice
+a solution for find  all of the subsets of an array:
+
 ```java
 import java.util.Scanner;
-import java.util.Random;
-import java.util.Arrays;
 class Solution {
-    private static final Random rand = new Random();
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int n = input.nextInt();
-        int[] arr = new int[n];
-        for(int i = 0;i<n;i++){
-            arr[i] = input.nextInt();
+        while(input.hasNextLine()){
+            int len = input.nextInt();
+            char[] cc = new char[len];
+            for(int i=0;i<len; i++){
+                cc[i] = input.next().charAt(0);
+            }
+            System.out.println("--- 打印开始 ---");
+            new Solution().getAllSubset(cc);
         }
-        int k = input.nextInt();
-        int[] result = new Solution().getMinK(arr,k);
-        for(int a : result){
-            System.out.println(a);
-        }
+ 
         input.close();
     }
     /**
-     * 找到无序数组最小的k个数,k不越界
+     * 以集合{a,b,c}为例，
+     * 
+     * 设i为数组下标，i从0~2
+     * 1<<0 == 001
+     * 1<<1 == 010
+     * 1<<2 == 100 
+     * 可以使用 1<<i 来分别表示a,b,c:
+     * 001 == a
+     * 010 == b
+     * 100 == c
+     * 对应的子集则是a,b,c的组合，二进制编码中1出现的位置对应子集中元素的出现位置，
+     * 于是对所有的子集也可以采用二进制编码的方式：
+     * 000 == null
+     * 001 == a
+     * 010 == b
+     * ...
+     * 111 == cba
+     * 如果想要提取出这样二进制编码代表的子集信息（如打印出来），
+     * 只需要元素编码与子集编码做“&”运算，来判断在每个被编码的子集中元素是否出现，
+     * 001 & 011 == 001 == a[1<<i的i] == a[0] == a
+     * 010 & 011 == 010 == a[1<<i的i] == a[1] == b
+     * 100 & 011 == 000
+     * 所以这个编码为011的子集则为 a，b
+     * 
      */
-    public int[] getMinK(int[] arr,int k) {
-        //最小的k个数的边界即是第(len-k)大的数
-        //且这个数将被放到正确的位置的上并返回其索引
-        int len = arr.length;
-        int kth = this.findKthLargest(arr,len-k);
-        return Arrays.copyOf(arr,kth);
+    public void getAllSubset(char[] arr){
+        int AllSetNum = (1 << arr.length) - 1;
+        // 子集的编码范围从0~2^n-1
+        for(int mask= 0;mask <= AllSetNum;mask++){
+            for(int i=0;i<arr.length;i++){
+                int tmp = 1<<i;
+                boolean hasPresented = (tmp & mask) > 0 ? true : false;
+                if(hasPresented)
+                    System.out.print(arr[i]+" ");
+            }
+            System.out.println();
+        }
     }
-    /**
-     * 找到第k大的数
-     */
-    public int findKthLargest(int[] nums, int k) {
-        int lo=0;
-        int hi=nums.length-1;
-        if(lo >= hi) return lo;
 
-        int target_index = nums.length-k;
-        while(true){
-            int i= this.partition(nums,lo,hi);
-            if(i == target_index)//当pivot前面有k个大于轴值得元素时,轴值就是答案
-                return i;
-            else if(i > target_index)//如果大于目标的位置,因为从小到大排列,说明还在左边
-                hi = i-1;
-            else 
-                lo =i+1;
-        }
-    }
-    
-    public int partition(int[] nums,int lo,int hi){
-        if(lo>=hi) return lo;// 为了防止传进来的已经指针相遇
-        int i = lo;
-        int j = hi+1;
-        
-        int random = lo + rand.nextInt(hi - lo);
-        swap(nums,lo,random);
-        int pivot = nums[lo];//可以通过随机选择轴值来降低平均时间复杂度
-                                //但是因为底下++i的关系,轴值必须选择最低位
-        while(true){
-            while(less(nums[++i],pivot)) if(i == hi) break;//找到大于pivot的跳出
-            while(less(pivot,nums[--j])) if(j == lo) break;
-            if(i>=j ) break;//划分的一趟完成
-            swap(nums,i,j);
-        }
-        swap(nums,lo,j);
-        return j;
-    }
-    public static boolean less(int a,int b){
-        return a>b ? false : true;
-    }
-    public static void swap(int[] nums,int j,int i){
-        int temp=nums[j];
-        nums[j]=nums[i];
-        nums[i]=temp;
-    }
 }
 ```
 
