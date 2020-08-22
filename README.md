@@ -36,29 +36,62 @@ a solution for find  all of the subsets of an array:
  *     ListNode(int x) { val = x; }
  * }
  */
+ /**
+ *本题拆解为三步,一是范围内反转,二是连接尾部,三是找准并连接头部
+ *本题启示:因为链表的不可直接访问性,可以通过设立多个结点保留位置信息
+ */
 class Solution {
-    // 这里头结点是存值的结点
-    public ListNode reverseList(ListNode head) {
-        if( head == null )
+    public ListNode reverseBetween(ListNode head, int m, int n) {
+        if(head == null )
             return head;
-// 对于链表类问题,多设指针可以来保存状态,以便更新
-        ListNode pre = null;
-        ListNode cur = head;
-        // 当前的指针需要判断其是否为空,才进行下一步
-        while(cur != null){
-            ListNode nextNode = cur.next;
-            // 反转
-            cur.next = pre;
-            // 更新,即是直接挪动指针而不是改变指向
-            pre = cur;
-            // 保存的下一个结点的状态派上用场
-            cur = nextNode;
 
+        ListNode pre;
+        ListNode cur=head;
+        if(m==1){
+            pre = null;
+        }else{
+            pre =head;
+            //移动m-2次
+            for(int i=0;i<m-2;i++){
+                pre=pre.next;
+            }
         }
-        // 最后cur一定是空,所以指向头结点的是pre
-        return pre;
+        //通过创立结点保留初始pre的位置
+        ListNode preStart = pre;
+        //移动m-1次
+        for(int i=0;i<m-1;i++){
+            cur = cur.next;
+        }
+        //保留初始结点的位置,即在pre的后一个
+        ListNode start = cur;
+
+        ListNode end = head;
+        //end设定为 反转后在最后一个结点的下一位
+        for(int i=0;i<n;i++){
+            end = end.next;
+        }
+        while(cur != end){
+            //nextNode是工具人, 看它的生命周期也就知道了
+            ListNode nextNode = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = nextNode;
+        }
+        
+        start.next = end;
+
+        // preStart为空说明head一定也反向了,那么新的头结点反转到了移动后的pre
+        if(preStart == null){
+            return pre;
+        }else{
+            //如果头结点没有反向,那么头结点还是头结点
+            preStart.next = pre;
+            return head;
+        }
+
     }
 }
+
 ```
 
 <p align="center"> 
