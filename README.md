@@ -28,70 +28,55 @@ If you want to know more about me, welcome to see [my online resume](https://ist
 a solution for find  all of the subsets of an array:
 
 ```java
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
- /**
- *本题拆解为三步,一是范围内反转,二是连接尾部,三是找准并连接头部
- *本题启示:因为链表的不可直接访问性,可以通过设立多个结点保留位置信息
- */
-class Solution {
-    public ListNode reverseBetween(ListNode head, int m, int n) {
-        if(head == null )
-            return head;
 
-        ListNode pre;
-        ListNode cur=head;
-        if(m==1){
-            pre = null;
-        }else{
-            pre =head;
-            //移动m-2次
-            for(int i=0;i<m-2;i++){
-                pre=pre.next;
+import java.util.HashMap;
+import java.util.Collection;
+import java.util.Iterator;
+class Solution {
+    public int subarraysDivByK(int[] A, int K) {
+        int len=A.length;
+        // 定义为从索引0到i的和
+        int preSum[] = new int[len];
+        preSum[0] = A[0];
+        for(int i=1;i<len;i++){
+            preSum[i] =preSum[i-1] +  A[i];
+        }
+        HashMap<Integer,Integer> map = new HashMap<>();
+        int count0 =0;
+        for(int i=0;i<len;i++){
+            int preSumModK = preSum[i] % K;
+            // 处理preSumModK为负的情况
+            if(preSumModK < 0)
+                preSumModK += K;
+            if(map.containsKey(preSumModK)){
+                map.put(preSumModK,map.get(preSumModK)+1);
+            }else if(preSumModK ==0 ){
+                //如果第一次出现 前缀和余K值 
+                count0 ++;
+            }else{
+                map.put(preSumModK,1);
             }
         }
-        //通过创立结点保留初始pre的位置
-        ListNode preStart = pre;
-        //移动m-1次
-        for(int i=0;i<m-1;i++){
-            cur = cur.next;
-        }
-        //保留初始结点的位置,即在pre的后一个
-        ListNode start = cur;
-
-        ListNode end = head;
-        //end设定为 反转后在最后一个结点的下一位
-        for(int i=0;i<n;i++){
-            end = end.next;
-        }
-        while(cur != end){
-            //nextNode是工具人, 看它的生命周期也就知道了
-            ListNode nextNode = cur.next;
-            cur.next = pre;
-            pre = cur;
-            cur = nextNode;
-        }
-        
-        start.next = end;
-
-        // preStart为空说明head一定也反向了,那么新的头结点反转到了移动后的pre
-        if(preStart == null){
-            return pre;
+        int count =0;
+       Collection c = map.values();
+       Iterator itr = c.iterator();
+       while(itr.hasNext()){
+           count += Combination((Integer)itr.next(),2);
+       }
+       count += count0;
+        return count;
+    }
+    private static int Combination(int n,int k){
+        //按需要改造了组合数的计算,只有一个前缀和时,除了
+        if(n ==1)
+            return 0;
+        if(k==0 || k==n){
+            return 1;
         }else{
-            //如果头结点没有反向,那么头结点还是头结点
-            preStart.next = pre;
-            return head;
+            return Combination(n-1,k) + Combination(n-1,k-1);
         }
-
     }
 }
-
 ```
 
 <p align="center"> 
