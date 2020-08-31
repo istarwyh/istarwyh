@@ -28,7 +28,6 @@ If you want to know more about me, welcome to see [my online resume](https://ist
 a solution for find  all of the subsets of an array:
 
 ```java
-
 import java.util.HashMap;
 import java.util.Collection;
 import java.util.Iterator;
@@ -37,44 +36,61 @@ class Solution {
         int len=A.length;
         // 定义为从索引0到i的和
         int preSum[] = new int[len];
-        preSum[0] = A[0];
-        for(int i=1;i<len;i++){
-            preSum[i] =preSum[i-1] +  A[i];
-        }
+
+        //利用hash表能够寻找组合的数目
         HashMap<Integer,Integer> map = new HashMap<>();
-        int count0 =0;
-        for(int i=0;i<len;i++){
-            int preSumModK = preSum[i] % K;
-            // 处理preSumModK为负的情况
-            if(preSumModK < 0)
-                preSumModK += K;
+
+        //如果前缀和本身就是0，因为需要对0的情况单独计数，因此是大于等于0
+        preSum[0] = A[0];
+        int tmp = preSum[0] % K;
+        int preSumModK = tmp >=0 ? tmp : tmp+K;  
+        map.put(preSumModK,1);
+
+        //为了利用递推公式，从i=1开始。上面先对i==0的情况处理。
+        for(int i=1;i<len;i++){
+
+            preSum[i] = preSum[i-1] +  A[i];
+
+            // 防止计算机计算preSumModK为负数的情况
+            // 真的前置知识比较多！！
+            tmp = preSum[i] % K;
+            preSumModK = tmp >=0 ? tmp : tmp+K;
+
             if(map.containsKey(preSumModK)){
                 map.put(preSumModK,map.get(preSumModK)+1);
-            }else if(preSumModK ==0 ){
-                //如果第一次出现 前缀和余K值 
-                count0 ++;
             }else{
                 map.put(preSumModK,1);
             }
         }
+
         int count =0;
-       Collection c = map.values();
-       Iterator itr = c.iterator();
-       while(itr.hasNext()){
-           count += Combination((Integer)itr.next(),2);
-       }
-       count += count0;
+        // 当presumModK为0，自己是本身就是一种满足条件的子数组组合
+        // 同时加上其本身的组合数情况
+        if(map.containsKey(0)){
+           count +=  map.get(0);
+        }
+
+        Collection c = map.values();
+        Iterator itr = c.iterator();
+        while(itr.hasNext()){
+            int cur = (Integer)itr.next();
+            count += Combination(cur,2);
+        }
+        
         return count;
     }
-    private static int Combination(int n,int k){
-        //按需要改造了组合数的计算,只有一个前缀和时,除了
-        if(n ==1)
-            return 0;
-        if(k==0 || k==n){
+
+    private static long Combination(int n,int m){
+
+        if(m==0)
             return 1;
-        }else{
-            return Combination(n-1,k) + Combination(n-1,k-1);
-        }
+        if (m==1) 
+            return n;
+        if(m>n/2)
+            return Combination(n,n-m);
+        if(n>1)
+            return Combination(n-1,m)+Combination(n-1,m-1);  
+        return 0;
     }
 }
 ```
