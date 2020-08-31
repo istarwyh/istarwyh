@@ -25,7 +25,8 @@ Here are some ideas to get you started:
 If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/)! Thank you!😄
 
 ## Resent Practice
-a solution for find  all of the subsets of an array:
+Given an array A of integers, return the number of (contiguous, non-empty) subarrays that have a sum divisible by K:
+
 
 ```java
 import java.util.HashMap;
@@ -39,14 +40,13 @@ class Solution {
 
         //利用hash表能够寻找组合的数目
         HashMap<Integer,Integer> map = new HashMap<>();
-
-        //如果前缀和本身就是0，因为需要对0的情况单独计数，因此是大于等于0
+        
         preSum[0] = A[0];
         int tmp = preSum[0] % K;
         int preSumModK = tmp >=0 ? tmp : tmp+K;  
         map.put(preSumModK,1);
 
-        //为了利用递推公式，从i=1开始。上面先对i==0的情况处理。
+        //为了利用递推公式，从i=1开始.上面先对i==0的情况处理.
         for(int i=1;i<len;i++){
 
             preSum[i] = preSum[i-1] +  A[i];
@@ -64,8 +64,8 @@ class Solution {
         }
 
         int count =0;
-        // 当presumModK为0，自己是本身就是一种满足条件的子数组组合
-        // 同时加上其本身的组合数情况
+        // 当presumModK为0，自己是本身就是一种满足条件的子数组组合；其他preSumModK只可能与相减为0 才能满足中间子数组被K整除
+        // 所以加上其本身的组合数情况
         if(map.containsKey(0)){
            count +=  map.get(0);
         }
