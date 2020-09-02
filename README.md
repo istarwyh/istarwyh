@@ -29,53 +29,37 @@ Given an array A of integers, return the number of (contiguous, non-empty) subar
 
 
 ```java
-import java.util.HashMap;
-import java.util.Collection;
-import java.util.Iterator;
 class Solution {
     public int subarraysDivByK(int[] A, int K) {
         int len=A.length;
         // 定义为从索引0到i的和
         int preSum[] = new int[len];
 
-        //利用hash表能够寻找组合的数目
-        HashMap<Integer,Integer> map = new HashMap<>();
-        
-        preSum[0] = A[0];
+        //如果前缀和本身就是0，因为需要对0的情况单独计数，因此是大于等于0
+        preSum[0] = A[0];      
         int tmp = preSum[0] % K;
         int preSumModK = tmp >=0 ? tmp : tmp+K;  
-        map.put(preSumModK,1);
 
-        //为了利用递推公式，从i=1开始.上面先对i==0的情况处理.
+        int[] preSumModKs = new int[10000];
+        preSumModKs[preSumModK]++;
+
+        //为了利用递推公式，从i=1开始。上面先对i==0的情况处理。
         for(int i=1;i<len;i++){
-
             preSum[i] = preSum[i-1] +  A[i];
 
             // 防止计算机计算preSumModK为负数的情况
-            // 真的前置知识比较多！！
             tmp = preSum[i] % K;
             preSumModK = tmp >=0 ? tmp : tmp+K;
 
-            if(map.containsKey(preSumModK)){
-                map.put(preSumModK,map.get(preSumModK)+1);
-            }else{
-                map.put(preSumModK,1);
-            }
+            preSumModKs[preSumModK]++;
         }
 
         int count =0;
-        // 当presumModK为0，自己是本身就是一种满足条件的子数组组合；其他preSumModK只可能与相减为0 才能满足中间子数组被K整除
-        // 所以加上其本身的组合数情况
-        if(map.containsKey(0)){
-           count +=  map.get(0);
-        }
+        // 当presumModK为0，自己是本身就是一种满足条件的子数组组合
+        count += preSumModKs[0];
 
-        Collection c = map.values();
-        Iterator itr = c.iterator();
-        while(itr.hasNext()){
-            int cur = (Integer)itr.next();
-            count += Combination(cur,2);
-        }
+        for(int a : preSumModKs)
+            count += Combination(a,2);
         
         return count;
     }
