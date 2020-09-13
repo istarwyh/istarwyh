@@ -30,124 +30,44 @@ Given a string S and a string T, find the minimum window in S which will contain
 
 ```java
 public class Solution {
-    static class Pattern{
-        String str;
-        int[] freq;
-        int groove;
+    public static void main(String[] args) {
+        char[] chars = {'a','b','c'};
+        new Solution().printSub(chars);
+    }
+    public void printSub(char[] chars){
 
-        Pattern(String str, boolean isIni){
-            this.str = str;
-            this.freq = new int[256];
-            this.groove  = 0;
-            if(isIni) {
-                for (int i = 0; i < str.length(); i++) {
-                    this.freq[str.charAt(i)]++;
+        /**
+         * 以集合{a,b,c}为例，
+         * 于是对所有的子集也可以采用二进制编码的方式：
+         * 000 == null
+         * 001 == a
+         * 010 == b
+         * ...
+         * 111 == cba
+         * 如果想要提取出这样二进制编码代表的子集信息（如打印出来），
+         * 只需要元素编码与子集编码做“&”运算，来判断在每个被编码的子集中元素是否出现，
+         * 001 & 011 == 001 == a[1<<i的i] == a[0] == a
+         * 010 & 011 == 010 == a[1<<i的i] == a[1] == b
+         * 100 & 011 == 000
+         * 所以这个编码为011的子集则为 a，b
+         *
+         */
+        int len = chars.length;
+        int totalNum = (1 << len) ;
+        for(int i=0;i<totalNum;i++){
+            for( int j = 0; j<len; j++ ){
+                int mask = 1 << j;
+                if( (i & mask) != 0){
+                    System.out.print( chars[j]);
                 }
-                for(int a : freq){
-                    if(a != 0)
-                        this.groove++;
-                }
             }
+            System.out.println();
         }
-    }
 
-    public String minWindow(String s, String t) {
-        Pattern p2s = new Pattern(s,false);
-        Pattern p2t = new Pattern(t,true);
-        int l = 0;
-        int r = -1;
-        int[] resIndex = this.find2Shrink(p2s,p2t,l,r);
-        l = resIndex[0];
-        r = resIndex[1];
-        // 对找不到的情况做判断
-        if( r == -1) return "";
 
-        String res = p2s.str.substring(l,r+1);
-        // 对结果集进行判断
-        if( l >= p2s.str.length() ){
-            return res;
-        }else{
-            do{
-              resIndex = this.break2circle(p2s,p2t,l,r);
-              l = resIndex[0];
-              r = resIndex[1];
-              // 如果不用找了
-              if( l == r ) return res;
-              // 对找不到的情况做判断
-              if( r == -1 ) return res;
-
-              if(res.length() > r-l+1) {
-                  res = p2s.str.substring(l,r+1);
-              }
-            }while ( l < p2s.str.length());
-        }
-        return res;
-    }
-
-    /**
-     *
-     * @param p2s
-     * @param p2t
-     * @param l
-     * @param r
-     * @return 从当前l开始，找到满足p2t的模式条件下最小的窗口
-     */
-    private  int[] find2Shrink(Pattern p2s,Pattern p2t,int l, int r){
-        // 对于这个函数的功能定义，允许l >= r
-        //find & expand
-        while( r+1 < p2s.str.length()){
-            r++;
-            int curIndex =  p2s.str.charAt(r);
-            p2s.freq[curIndex]++;
-            if( p2s.freq[curIndex] == p2t.freq[curIndex] ){
-                p2s.groove++;
-            }
-            if(p2s.groove == p2t.groove) break;
-        }
-        //shrink
-        int tail = p2s.str.charAt(l);
-        while( l < r ){
-
-            // 然后 不断缩小直到满足窗口条件，不能再去掉任何一个
-            // 以及 没有踩中槽说明它是多余的，可以去掉
-            if( p2s.freq[tail] > p2t.freq[tail] || p2t.freq[tail] <= 0){
-                p2s.freq[tail]--;
-                l++;
-                tail = p2s.str.charAt(l);
-            }else{
-                break;
-            }
-        }
-        if( p2s.groove == p2t.groove ){
-            return new int[]{l,r};
-        }else{
-            return  new int[]{-1,-1};
-        }
-    }
-
-    /**
-     *
-     * @param p2s
-     * @param p2t
-     * @param l
-     * @param r
-     * @return 在保障循环不变量的情况下做一个强制l前移的动作，以找到最小的满足模式的窗口
-     */
-    private int[] break2circle(Pattern p2s, Pattern p2t,int l,int r){
-        // 维护循环不变量的定义
-        // 传参的时候一定要做校验！！对于这个函数的功能定义，不允许l >= r
-        if(l + 1 > r) return new int[]{l,l};
-        // 强制破坏边界
-        int tail = p2s.str.charAt(l);
-        if( p2s.freq[tail] == p2t.freq[tail]){
-            p2s.groove--;
-        }
-        p2s.freq[tail]--;
-        l++;
-        //circle
-        return this.find2Shrink(p2s,p2t,l,r);
     }
  }
+
 ```
 
 <p align="center"> 
