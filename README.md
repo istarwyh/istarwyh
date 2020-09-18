@@ -25,48 +25,40 @@ Here are some ideas to get you started:
 If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/)! Thank you!😄
 
 ## Resent Practice
-Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n)[.](https://leetcode-cn.com/problems/minimum-window-substring)
+Given a pattern and a string s, find if s follows the same pattern[.](https://leetcode-cn.com/problems/word-pattern/)
 
 
 ```java
-public class Solution {
-    public static void main(String[] args) {
-        char[] chars = {'a','b','c'};
-        new Solution().printSub(chars);
-    }
-    public void printSub(char[] chars){
+class Solution {
+    // #290 是基于维护单射定义的解法,即a->b,有在甲方a必有b，在乙方有b必有a；
+    // #205 尝试采用先解决多射再比较的问题
+        // -->不管怎么样还是需得到映射关系，于是引入HashMap实属无奈
+    public boolean isIsomorphic(String s, String t) {
+        // if( s.length() != t.length() ) return false;
+        int[] mapS = new int[128];
+        int[] mapT = new int[128];
 
-        /**
-         * 以集合{a,b,c}为例，
-         * 于是对所有的子集也可以采用二进制编码的方式：
-         * 000 == null
-         * 001 == a
-         * 010 == b
-         * ...
-         * 111 == cba
-         * 如果想要提取出这样二进制编码代表的子集信息（如打印出来），
-         * 只需要元素编码与子集编码做“&”运算，来判断在每个被编码的子集中元素是否出现，
-         * 001 & 011 == 001 == a[1<<i的i] == a[0] == a
-         * 010 & 011 == 010 == a[1<<i的i] == a[1] == b
-         * 100 & 011 == 000
-         * 所以这个编码为011的子集则为 a，b
-         *
-         */
-        int len = chars.length;
-        int totalNum = (1 << len) ;
-        for(int i=0;i<totalNum;i++){
-            for( int j = 0; j<len; j++ ){
-                int mask = 1 << j;
-                if( (i & mask) != 0){
-                    System.out.print( chars[j]);
-                }
+        HashMap<Character,Character> map = new HashMap<>();
+        for( int i=0;i<s.length();i++){
+            char c1  = s.charAt(i);
+            mapS[c1]++;
+            char c2 = t.charAt(i);
+            mapT[c2]++;
+
+            if( mapS[c1]>1 ||  mapT[c2]>1  ){
+                // 当已经建立映射时，c1与c2 应该同步变化
+                    // 尝试失败，没有办法定义所谓的同步变化。当已经建立映射，不能判断
+                if( mapS[c1] != mapT[c2])
+                    return false;
+                else if( mapT[ map.get(Character.valueOf(c1)).charValue() ] != mapS[c1] )
+                    return false;
             }
-            System.out.println();
+            map.put( Character.valueOf(c1), Character.valueOf(c2) );
+
         }
-
-
+        return true;
     }
- }
+}
 
 ```
 
