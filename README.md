@@ -25,41 +25,48 @@ Here are some ideas to get you started:
 If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/)! Thank you!😄
 
 ## Resent Practice
-Given a pattern and a string s, find if s follows the same pattern[.](https://leetcode-cn.com/problems/word-pattern/)
+Given a string, sort it in decreasing order based on the frequency of characters[.](https://leetcode-cn.com/problems/word-pattern/)
 
 
 ```java
+import java.util.Map.Entry;
 class Solution {
-    // #290 是基于维护单射定义的解法,即a->b,有在甲方a必有b，在乙方有b必有a；
-    // #205 尝试采用先解决多射再比较的问题
-        // -->不管怎么样还是需得到映射关系，于是引入HashMap实属无奈
-    public boolean isIsomorphic(String s, String t) {
-        // if( s.length() != t.length() ) return false;
-        int[] mapS = new int[128];
-        int[] mapT = new int[128];
-
-        HashMap<Character,Character> map = new HashMap<>();
-        for( int i=0;i<s.length();i++){
-            char c1  = s.charAt(i);
-            mapS[c1]++;
-            char c2 = t.charAt(i);
-            mapT[c2]++;
-
-            if( mapS[c1]>1 ||  mapT[c2]>1  ){
-                // 当已经建立映射时，c1与c2 应该同步变化
-                    // 尝试失败，没有办法定义所谓的同步变化。当已经建立映射，不能判断
-                if( mapS[c1] != mapT[c2])
-                    return false;
-                else if( mapT[ map.get(Character.valueOf(c1)).charValue() ] != mapS[c1] )
-                    return false;
-            }
-            map.put( Character.valueOf(c1), Character.valueOf(c2) );
-
+       public String frequencySort(String s) {
+        if( s == null ) return null;
+        if( s.length() == 0) return s;
+        int len = s.length();
+        HashMap<Character,Integer> map = new HashMap<>();
+        for( int i =0;i<len;i++){
+            Character c = s.charAt(i);
+            map.put(c, map.getOrDefault(c,0)+1 );
         }
-        return true;
+        Iterator iter = map.entrySet().iterator();
+        StringBuilder sb = new StringBuilder();
+        if( iter.hasNext()) {
+            Entry maxNode = (Entry) iter.next();
+            do {
+                while (iter.hasNext()) {
+                    Entry curNode = (Entry) iter.next();
+                    if ((Integer) maxNode.getValue() < (Integer) curNode.getValue()) {
+                        maxNode = curNode;
+                    }
+                }
+                for (int i = 0; i < (Integer) maxNode.getValue(); i++) {
+                    sb.append(maxNode.getKey());
+                }
+                map.remove((Character) maxNode.getKey());
+
+                iter = map.entrySet().iterator();
+                if (iter.hasNext()) {
+                    maxNode = (Entry) iter.next();
+                }
+            } while (map.size() > 0);
+
+            return sb.toString();
+        }
+        return null;
     }
 }
-
 ```
 
 <p align="center"> 
