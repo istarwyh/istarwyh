@@ -25,71 +25,69 @@ Here are some ideas to get you started:
 If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/)! Thank you!😄
 
 ## Resent Practice
-16. 3Sum Closest[.](https://leetcode-cn.com/problems/3sum-closest/)
+49. Group Anagramst[.](https://leetcode-cn.com/problems/group-anagrams/)
 
 
 ```java
 class Solution {
-    // 仍然是O(n2)然后加一起剪枝
-        //因为剪枝，代码冗余是很多的,但是因为逻辑稍微有些不一样，目前不知道怎样去抽象
-    public int threeSumClosest(int[] nums, int target) {
-        // 题设说了至少有一个解，这里不防御了
-        Arrays.sort(nums);
-        int resGap = Integer.MAX_VALUE;
-        int res = target;
-        // 剪枝操作1：最后不足三个数时已经可以跳出
-        for( int i=0;i<nums.length-2;i++ ){
-            while( i != 0 &&  i< nums.length && nums[i] == nums[i-1] ) i++;
-            if( i >= nums.length - 2 ) break;
-            
-            // 剪枝操作2：target小于最小值,后续只能远离
-            int min = nums[i]+nums[i+1]+nums[i+2];
-            if( target < min ){
-                int absGap = Math.abs( min -target );
-                if( resGap > absGap){
-                    resGap = absGap;
-                    res = min;
-                }
-                continue;
-            }
-            // 剪枝操作3：target大于最大值,后续只能远离
-            int max = nums[i]+nums[nums.length-1]+nums[nums.length-2];
-            if( target > max ){
-                int absGap = Math.abs( max -target );
-                if( resGap > absGap){
-                    resGap = absGap;
-                    res = max;
-                }
-                continue;
-            }
+    // 题目主要考选取什么标准的能力，选取什么标准呢？
+        //  Anagram意思是这两个单词中字母的出现频率一样
+            // 这个意思是我需要把这些单词化成可以量化的指标，并把这些指标作为key即分类的标准来分类
+       public List<List<String>> groupAnagrams(String[] strs) {
+        if (strs == null) return null;
+        if (strs.length == 0) return new ArrayList<>();
 
-            int j = i+1;
-            int k= nums.length-1;
-            while( j<k ){
-                int tmpSum = nums[i]+nums[j]+nums[k];
-                int tmpGap = tmpSum-target;
-                int absTmp = Math.abs(tmpGap);
-                if ( resGap > absTmp ){
-                    resGap = absTmp;
-                    res = tmpSum;
-                } 
-                int minGap = 0;
-                if( tmpGap > minGap ){
-                    k--;
-                }else if( tmpGap < minGap ){
-                    j++;
-                }else{
-                    // 题目说的至少一个解包括了接近到两者相等的情况
-                    // 剪枝操作4：直接返回也是一个
-                    return target;
-                }
-                while( j != i+1 && j<k && nums[j] == nums[j-1] ) j++;
-                while( k != nums.length-1 && j<k && nums[k] == nums[k+1] ) k--;
-                if( j>= k ) break;
+        HashMap<StrPattern, List<String>> map = new HashMap<>(16);
+        for (String str : strs) {
+            StrPattern strP = new StrPattern(str);
+            if (map.containsKey(strP)) {
+                List<String> v = map.get(strP);
+                v.add(str);
+                map.put(strP, v);
+            } else {
+                List<String> l = new ArrayList<>();
+                l.add(str);
+                map.put(strP, l);
             }
         }
-        return res;
+        return new ArrayList<>(map.values());
     }
+
+    static class StrPattern{
+        Integer[] freq;
+        // 重定义它自己的hashCode,并提出来作为属性以在重写hashCode()与equals()时都用到
+        int hashCode;
+        public  StrPattern(String str) {
+             this.freq = new Integer[26];
+            Arrays.fill(freq, 0);
+            for (int i = 0; i < str.length(); i++) {
+                freq[str.charAt(i) - 'a'] ++;
+            }
+            this.hashCode = Arrays.toString(freq).hashCode();
+        }
+        @Override
+        public int hashCode() {
+            // 同样内容的freq[]只有转成String了才能避免总是新对象的悲剧，String常量池牛！
+            return hashCode;
+        }
+
+        // @Override
+        // public boolean equals(Object obj) {
+        //     StrPattern o = (StrPattern)obj;
+        //     if( this.freq.length != o.freq.length ) return false;
+        //     for( int i=0;i<o.freq.length;i++){
+        //         if(!this.freq[i].equals(o.freq[i])) return false;
+        //     }
+        //     return true;
+        // }
+        
+        @Override
+        public boolean equals(Object obj) {
+            StrPattern o = (StrPattern)obj;
+            return this.hashCode == o.hashCode;
+        }
+    }
+
 }
 ```
 
