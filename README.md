@@ -25,37 +25,71 @@ Here are some ideas to get you started:
 If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/)! Thank you!😄
 
 ## Resent Practice
-160. Intersection of Two Linked Lists[.](https://leetcode-cn.com/problems/intersection-of-two-linked-lists/)
+16. 3Sum Closest[.](https://leetcode-cn.com/problems/3sum-closest/)
 
 
 ```java
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
- * }
- */
- // 对于相交的问题，结成环就可以使用快慢指针了-->但是快指针指向慢指针的时候一定是交点吗？你是无法证明的
-    // 无法证明的东西即使对了也还是不要尝试了
-public class Solution {
-     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-         if( headA == null || headB ==null ) return null;
+class Solution {
+    // 仍然是O(n2)然后加一起剪枝
+        //因为剪枝，代码冗余是很多的,但是因为逻辑稍微有些不一样，目前不知道怎样去抽象
+    public int threeSumClosest(int[] nums, int target) {
+        // 题设说了至少有一个解，这里不防御了
+        Arrays.sort(nums);
+        int resGap = Integer.MAX_VALUE;
+        int res = target;
+        // 剪枝操作1：最后不足三个数时已经可以跳出
+        for( int i=0;i<nums.length-2;i++ ){
+            while( i != 0 &&  i< nums.length && nums[i] == nums[i-1] ) i++;
+            if( i >= nums.length - 2 ) break;
+            
+            // 剪枝操作2：target小于最小值,后续只能远离
+            int min = nums[i]+nums[i+1]+nums[i+2];
+            if( target < min ){
+                int absGap = Math.abs( min -target );
+                if( resGap > absGap){
+                    resGap = absGap;
+                    res = min;
+                }
+                continue;
+            }
+            // 剪枝操作3：target大于最大值,后续只能远离
+            int max = nums[i]+nums[nums.length-1]+nums[nums.length-2];
+            if( target > max ){
+                int absGap = Math.abs( max -target );
+                if( resGap > absGap){
+                    resGap = absGap;
+                    res = max;
+                }
+                continue;
+            }
 
-        ListNode l1 = headA;
-        ListNode l2 = headB; 
-        while( l1 != l2){
-            l1 = l1!=null ? l1.next : headB;
-            l2 = l2!=null ? l2.next : headA;
+            int j = i+1;
+            int k= nums.length-1;
+            while( j<k ){
+                int tmpSum = nums[i]+nums[j]+nums[k];
+                int tmpGap = tmpSum-target;
+                int absTmp = Math.abs(tmpGap);
+                if ( resGap > absTmp ){
+                    resGap = absTmp;
+                    res = tmpSum;
+                } 
+                int minGap = 0;
+                if( tmpGap > minGap ){
+                    k--;
+                }else if( tmpGap < minGap ){
+                    j++;
+                }else{
+                    // 题目说的至少一个解包括了接近到两者相等的情况
+                    // 剪枝操作4：直接返回也是一个
+                    return target;
+                }
+                while( j != i+1 && j<k && nums[j] == nums[j-1] ) j++;
+                while( k != nums.length-1 && j<k && nums[k] == nums[k+1] ) k--;
+                if( j>= k ) break;
+            }
         }
-    
-        return l1;
+        return res;
     }
-}}
 }
 ```
 
