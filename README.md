@@ -25,70 +25,57 @@ Here are some ideas to get you started:
 If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/)! Thank you!😄
 
 ## Resent Practice
-49. Group Anagramst[.](https://leetcode-cn.com/problems/group-anagrams/)
+219. Contains Duplicate II[.](https://leetcode-cn.com/problems/contains-duplicate-ii/)
 
 
 ```java
 class Solution {
-    // 题目主要考选取什么标准的能力，选取什么标准呢？
-        //  Anagram意思是这两个单词中字母的出现频率一样
-            // 这个意思是我需要把这些单词化成可以量化的指标，并把这些指标作为key即分类的标准来分类
-       public List<List<String>> groupAnagrams(String[] strs) {
-        if (strs == null) return null;
-        if (strs.length == 0) return new ArrayList<>();
+    /**
+    * 面向指针解题处处需要进行防御式编程
+    */
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        // 对所有有引用的家伙都不要掉以轻心啊！！
+        if( nums == null || nums.length == 0 ) return false;
+        // 维护滑动窗口同时维护映射
+        HashSet<Integer> set = new HashSet();
+        int l = 0;
+        int r = l + k;
+        while( r >= nums.length ) r--;
 
-        HashMap<StrPattern, List<String>> map = new HashMap<>(16);
-        for (String str : strs) {
-            StrPattern strP = new StrPattern(str);
-            if (map.containsKey(strP)) {
-                List<String> v = map.get(strP);
-                v.add(str);
-                map.put(strP, v);
-            } else {
-                List<String> l = new ArrayList<>();
-                l.add(str);
-                map.put(strP, l);
+        for( int i=0;i < r+1 ;i++ ){
+            if( set.contains( nums[i] ) ) return true;
+            set.add( nums[i] );
+        }
+        // 以长度为限界，维护长度
+        while( r < nums.length ){
+            set.remove( nums[ l ] );
+            r++;
+            if( r >= nums.length ) break;
+
+            if( set.contains( nums[r] ) ) return true;
+            else{
+                l++;
+                set.add( nums[r] );     
             }
         }
-        return new ArrayList<>(map.values());
+        return false;
     }
-
-    static class StrPattern{
-        Integer[] freq;
-        // 重定义它自己的hashCode,并提出来作为属性以在重写hashCode()与equals()时都用到
-        int hashCode;
-        public  StrPattern(String str) {
-             this.freq = new Integer[26];
-            Arrays.fill(freq, 0);
-            for (int i = 0; i < str.length(); i++) {
-                freq[str.charAt(i) - 'a'] ++;
-            }
-            this.hashCode = Arrays.toString(freq).hashCode();
-        }
-        @Override
-        public int hashCode() {
-            // 同样内容的freq[]只有转成String了才能避免总是新对象的悲剧，String常量池牛！
-            return hashCode;
-        }
-
-        // @Override
-        // public boolean equals(Object obj) {
-        //     StrPattern o = (StrPattern)obj;
-        //     if( this.freq.length != o.freq.length ) return false;
-        //     for( int i=0;i<o.freq.length;i++){
-        //         if(!this.freq[i].equals(o.freq[i])) return false;
-        //     }
-        //     return true;
-        // }
-        
-        @Override
-        public boolean equals(Object obj) {
-            StrPattern o = (StrPattern)obj;
-            return this.hashCode == o.hashCode;
-        }
-    }
-
-}
+    /**
+    * 这种方法不显式用指针,直接维护长度就不用防御指针
+    */
+//      public boolean containsNearbyDuplicate(int[] nums, int k) {
+//          HashSet<Integer> set = new HashSet();
+//          for( int i=0;i<nums.length;i++ ){
+//              if( set.contains( nums[i] ) ) return true;
+//              set.add( nums[i] );
+//             //  其实距离为k,有k+1个元素
+//              if( set.size() == k+1 ){
+//                  set.remove( nums[i-k] );
+//              }
+//          }
+//          return false;
+//      }
+// }
 ```
 
 <p align="center"> 
