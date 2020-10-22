@@ -25,7 +25,7 @@ Here are some ideas to get you started:
 If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/)! Thank you!😄
 
 ## Resent Practice
-86. Partition List[.](https://leetcode-cn.com/problems/partition-list/)
+2. Add Two Numbers[.](https://leetcode-cn.com/problems/add-two-numbers/)
 
 
 ```java
@@ -34,36 +34,45 @@ If you want to know more about me, welcome to see [my online resume](https://ist
  * public class ListNode {
  *     int val;
  *     ListNode next;
- *     ListNode(int x) { val = x; }
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+//  当使用链表表示数字
+//         数字可能有前置0吗？
+//         数字是负数，符号位应该怎么办？
+// 这种在天文数字中可能会出现，无论是因子还是结果，最后都只能用链表存储
+    // 因此应直接考虑对于链表结点本身的相加而不走系统的相加过程
 class Solution {
-        // 这该怎么从后往前遍历呢？所以不能采用原本的快排式循环交换解法了
-        // 链表的缺点在于不好遍历，优点却在于可以一次迭代即可---因为结点可以拆开
-    public ListNode partition(ListNode head, int x) {
-        if( head == null ) return null;
-        // 多使用额外的结点保存状态，这里保存最开始的
-        ListNode before_head = new ListNode(0);
-        ListNode before = before_head;
-        ListNode after_head = new ListNode(0);
-        ListNode after = after_head;
-        while( head != null ){
-            // 必须把等于的情况也放在第二段链表中！因为相等的情况是轴值应处于中间
-            if( head.val >= x ){
-                after.next = head;
-                after = after.next;
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        if( l1 == null || l2 == null ) return null;
+        ListNode head = null;
+        ListNode p = null;
+        int carry = 0;
+        while( l1 != null || l2 != null ){
+            int v1 = l1 == null ? 0 : l1.val;
+            int v2 = l2 == null ? 0 : l2.val;
+            int sum = v1+v2+carry;
+            if( head == null ){
+                // 余数取末尾
+                head = new ListNode(sum % 10);
+                p = head;
             }else{
-                before.next = head;
-                before = before.next;
+                // 除法取上位
+                p.next = new ListNode(sum % 10 );
+                p = p.next;
             }
-            head = head.next;
+            carry = sum / 10;
+            l1 =  l1 == null ? l1 : l1.next;
+            l2 =  l2 == null ? l2 : l2.next;
         }
-        after.next = null;
-
-        before.next = after_head.next;
-        return before_head.next;
+        if( carry > 0 ){
+            p.next = new ListNode( carry);
+        }
+        return head;
     }
-} 
+}
 ```
 
 <p align="center"> 
