@@ -25,7 +25,7 @@ Here are some ideas to get you started:
 If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/)! Thank you!😄
 
 ## Resent Practice
-2. Add Two Numbers[.](https://leetcode-cn.com/problems/add-two-numbers/)
+445. Add Two Numbers II[.](https://leetcode-cn.com/problems/add-two-numbers-ii/)
 
 
 ```java
@@ -34,42 +34,47 @@ If you want to know more about me, welcome to see [my online resume](https://ist
  * public class ListNode {
  *     int val;
  *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ *     ListNode(int x) { val = x; }
  * }
  */
-//  当使用链表表示数字
-//         数字可能有前置0吗？
-//         数字是负数，符号位应该怎么办？
-// 这种在天文数字中可能会出现，无论是因子还是结果，最后都只能用链表存储
-    // 因此应直接考虑对于链表结点本身的相加而不走系统的相加过程
 class Solution {
+    // 如果不是转化为正常的int数相加,(然后又不采用位运算？),就只有采用从尾数进制的办法
+        // 那么就需要借助辅助的数据结构，如栈
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         if( l1 == null || l2 == null ) return null;
-        ListNode head = null;
-        ListNode p = null;
-        int carry = 0;
-        while( l1 != null || l2 != null ){
-            int v1 = l1 == null ? 0 : l1.val;
-            int v2 = l2 == null ? 0 : l2.val;
-            // 一个数等于位置数上的数加上从下面来的进位数
-            int sum = v1+v2+carry;
-            if( head == null ){
-                // 余数取末尾
-                head = new ListNode(sum % 10);
-                p = head;
-            }else{
-                // 除法取上位
-                p.next = new ListNode(sum % 10 );
-                p = p.next;
-            }
-            carry = sum / 10;
-            l1 =  l1 == null ? l1 : l1.next;
-            l2 =  l2 == null ? l2 : l2.next;
+        ArrayDeque<Integer> stack1 = new ArrayDeque<>();
+        while( l1!= null ){
+            stack1.push( l1.val );
+            l1= l1.next;
         }
-        if( carry > 0 ){
-            p.next = new ListNode( carry);
+        ArrayDeque<Integer> stack2 = new ArrayDeque<>();
+        while(l2 != null ){
+            stack2.push( l2.val );
+            l2 = l2.next;
+        }
+
+        int carry =0;
+        int v1=0;
+        int v2=0;
+        ArrayDeque<Integer> resStack = new ArrayDeque<>();
+        while( stack2.size() > 0 || stack1.size() > 0 ){
+            if( stack1.size() > 0){
+                v1 = stack1.pop();
+            }
+            if( stack2.size() > 0 ){
+                v2 = stack2.pop();
+            }
+            int sum = v1+v2+carry;
+            v1=0;v2=0;
+            resStack.push(sum%10);
+            carry = sum /10;
+        }
+        if( carry > 0 ) resStack.push( carry );
+        ListNode head = new ListNode(resStack.pop() );
+        ListNode p = head;
+        while( resStack.size() > 0 ){
+            p.next = new ListNode( resStack.pop());
+            p = p.next;
         }
         return head;
     }
