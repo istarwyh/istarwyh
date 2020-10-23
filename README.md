@@ -53,6 +53,7 @@ class Solution {
         while( l1 != null || l2 != null ){
             int v1 = l1 == null ? 0 : l1.val;
             int v2 = l2 == null ? 0 : l2.val;
+            // 一个数等于位置数上的数加上从下面来的进位数
             int sum = v1+v2+carry;
             if( head == null ){
                 // 余数取末尾
