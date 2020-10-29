@@ -25,58 +25,43 @@ Here are some ideas to get you started:
 If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/)! Thank you!😄
 
 ## Resent Practice
-445. Add Two Numbers II[.](https://leetcode-cn.com/problems/add-two-numbers-ii/)
+剑指 Offer 48. 最长不含重复字符的子字符串 LCOF[.](https://leetcode-cn.com/problems/add-two-numbers-ii/)
 
 
 ```java
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
 class Solution {
-    // 如果不是转化为正常的int数相加,(然后又不采用位运算？),就只有采用从尾数进制的办法
-        // 那么就需要借助辅助的数据结构，如栈
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        if( l1 == null || l2 == null ) return null;
-        ArrayDeque<Integer> stack1 = new ArrayDeque<>();
-        while( l1!= null ){
-            stack1.push( l1.val );
-            l1= l1.next;
-        }
-        ArrayDeque<Integer> stack2 = new ArrayDeque<>();
-        while(l2 != null ){
-            stack2.push( l2.val );
-            l2 = l2.next;
-        }
+   public int lengthOfLongestSubstring(String s) {
+        if( s == null || s.length() == 0) return 0;
+        int[] freq= new int[128];
 
-        int carry =0;
-        int v1=0;
-        int v2=0;
-        ArrayDeque<Integer> resStack = new ArrayDeque<>();
-        while( stack2.size() > 0 || stack1.size() > 0 ){
-            if( stack1.size() > 0){
-                v1 = stack1.pop();
+        int left = 0;
+        int right = 0;
+        freq[ s.charAt(0)]++;
+        int res = 1;
+        while(left <= right ){
+            // 先扩张
+            while( right+1 < s.length() && freq[s.charAt(right+1)] != 1){
+                right++;
+                freq[s.charAt(right)]++;
             }
-            if( stack2.size() > 0 ){
-                v2 = stack2.pop();
+            int len = right-left+1;
+            if( right+1 >= s.length()){
+                return Math.max(res, len);
             }
-            int sum = v1+v2+carry;
-            v1=0;v2=0;
-            resStack.push(sum%10);
-            carry = sum /10;
+            if(freq[s.charAt(right+1)] == 1){
+                res = Math.max(res, len);
+            }
+            // 再往前踏一步
+            right++;
+            int cur = s.charAt(right);
+            freq[cur]++;
+            // 然后收缩到要求的无重复内
+            while( freq[ cur ] >= 2 ){
+                freq[s.charAt(left) ]--;
+                left++;
+            }
         }
-        if( carry > 0 ) resStack.push( carry );
-        ListNode head = new ListNode(resStack.pop() );
-        ListNode p = head;
-        while( resStack.size() > 0 ){
-            p.next = new ListNode( resStack.pop());
-            p = p.next;
-        }
-        return head;
+        return res;
     }
 }
 ```
