@@ -25,45 +25,48 @@ Here are some ideas to get you started:
 If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/)! Thank you!😄
 
 ## Resent Practice
-82. Remove Duplicates from Sorted List II[.](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/)
+计数排序求无序数组相邻最大差值
 
 
 ```java
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
-class Solution {
-       public ListNode deleteDuplicates(ListNode head) {
-        if( head  == null ) return null;
-        ListNode preHead = new ListNode(-1);
-        preHead.next = head;
-        ListNode curNode = preHead;
-        while( curNode.next != null && curNode.next.next != null ){
-            if( curNode.next.val == curNode.next.next.val ){
-//            定义curNode.next一定是满足条件的那个结点
-                ListNode tmpNode = curNode.next;
-//            结束循环后,tmpNode要么是尾结点,要么是重复结点的尾结点
-                while( tmpNode != null && tmpNode.next != null && tmpNode.val == tmpNode.next.val){
-                    tmpNode = tmpNode.next;
-                }
-//            仅仅跳过当前重复的结点,curNode的指向的依旧是可能重复的结点
-                curNode.next = tmpNode.next;
-            }else {
-//            当确认不是重复结点的时候,当前指针再后移
-                curNode = curNode.next;
-            }
+ public static Integer getMaxAdjustDifference(int[] a) {
+        int max = a[0];
+        int min = a[0];
+        for( int i=0;i<a.length;i++ ){
+            max = max > a[i] ? max : a[i];
+            min = min > a[i] ? a[i] : min;
         }
-        ListNode res = preHead.next;
-        preHead.next = null;
-        return res;
+        int range = max - min + 1;
+        int[] countArray = new int[range];
+        //计数排序思想,放到对应的位置上
+        for (int i = 0; i < a.length; i++) {
+            countArray[a[i] - min]++;
+        }
+        int count = 0;
+        int maxCount = 0;
+        int startIndex = 0;
+        int endIndex  = 0;
+        int maxNearDifference = 0;
+        // 做映射后,差值即数没有被映射的0的数目
+        for (int i = 0; i < countArray.length; i++) {
+            if (countArray[i] == 0) {
+                if (count == 0) {
+                    startIndex = i-1;
+                }
+                count++;
+            }else {
+                count = 0;
+            }
+            if (count > maxCount) {
+                maxCount = count;
+                
+                endIndex = i+1;
+            }
+            //考虑到每一次更新后的情况，需要取绝对值以示长度
+            maxNearDifference = Math.max(maxNearDifference, Math.abs(endIndex - startIndex));
+        }  
+        return maxNearDifference ;
     }
-
-}
 ```
 
 <p align="center"> 
