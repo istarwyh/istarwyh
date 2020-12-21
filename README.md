@@ -32,40 +32,35 @@ If you want to know more about me, welcome to see [my online resume](https://ist
  public static Integer getMaxAdjustDifference(int[] a) {
         int max = a[0];
         int min = a[0];
-        for( int i=0;i<a.length;i++ ){
-            max = max > a[i] ? max : a[i];
-            min = min > a[i] ? a[i] : min;
+        for( int num : a){
+            max = Math.max(max, num);
+            min = Math.min(min,num);
         }
-        int range = max - min + 1;
-        int[] countArray = new int[range];
-        //计数排序思想,放到对应的位置上
-        for (int i = 0; i < a.length; i++) {
-            countArray[a[i] - min]++;
+        // find the max & min to save some space
+        int range = max- min +1 ;
+        int[] mapArr = new int[range];
+        // 按照本身的大小进行映射，因此相互之间的差值即相互距离的远近
+        for( int i=0;i<a.length;i++){
+            mapArr[ a[i]-min ] = a[i];
         }
-        int count = 0;
-        int maxCount = 0;
-        int startIndex = 0;
-        int endIndex  = 0;
-        int maxNearDifference = 0;
-        // 做映射后,差值即数没有被映射的0的数目
-        for (int i = 0; i < countArray.length; i++) {
-            if (countArray[i] == 0) {
-                if (count == 0) {
-                    startIndex = i-1;
-                }
-                count++;
-            }else {
-                count = 0;
+        // 而相互的距离又是没有被赋值的，即数组初始化后0的个数
+        // 计数0的个数
+        int maxZeroCount = 0;
+        int zeroCount = 0;
+        boolean isFirstNotZero = false;
+        for (int j : mapArr) {
+            if (j != 0) {
+                isFirstNotZero = true;
             }
-            if (count > maxCount) {
-                maxCount = count;
-                
-                endIndex = i+1;
+            if (isFirstNotZero && j == 0) {
+                zeroCount++;
+            } else {
+                maxZeroCount = Math.max(maxZeroCount, zeroCount);
+                zeroCount = 0;
             }
-            //考虑到每一次更新后的情况，需要取绝对值以示长度
-            maxNearDifference = Math.max(maxNearDifference, Math.abs(endIndex - startIndex));
-        }  
-        return maxNearDifference ;
+        }
+        // 相邻差值为映射后0的个数+1
+        return maxZeroCount+1;
     }
 ```
 
