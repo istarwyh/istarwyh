@@ -25,42 +25,74 @@ Here are some ideas to get you started:
 If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/)! Thank you!😄
 
 ## Resent Practice
-计数排序求无序数组相邻最大差值
+[143. Reorder List](https://leetcode-cn.com/problems/reorder-list/)
 
 
 ```java
- public static Integer getMaxAdjustDifference(int[] a) {
-        int max = a[0];
-        int min = a[0];
-        for( int num : a){
-            max = Math.max(max, num);
-            min = Math.min(min,num);
+ public void reorderList(ListNode head) {
+        if (head == null || head.next == null)
+            return;
+        ListNode endNode1 = getSplitNode(head);
+        ListNode startNode2 = endNode1.next;
+        ListNode l1 = getFirstPart(head,endNode1);
+        ListNode l2 = reverseListAsSecondPart(startNode2);
+        merge(l1, l2);
+    }
+    private ListNode getSplitNode(ListNode head){
+        ListNode prev = null, slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        // find the max & min to save some space
-        int range = max- min +1 ;
-        int[] mapArr = new int[range];
-        // 按照本身的大小进行映射，因此相互之间的差值即相互距离的远近
-        for( int i=0;i<a.length;i++){
-            mapArr[ a[i]-min ] = a[i];
+        return prev;
+    }
+
+    /**
+     * 切割得到第一部分链表
+     * @param head 链表原始头结点
+     * @param endNode 切割后第一部分链表尾结点
+     * @return
+     */
+    private ListNode getFirstPart(ListNode head, ListNode endNode) {
+//        注释上写why
+//        保证第一部分与第二部分切断联系
+        endNode.next = null;
+        return head;
+    }
+
+    private ListNode reverseListAsSecondPart(ListNode head) {
+        if (head == null)
+            return null;
+        ListNode prev = null;
+        ListNode curr = head;
+        ListNode nextTemp = null;
+        while (curr != null) {
+            nextTemp = curr.next;
+            curr.next = prev;
+
+            prev = curr;
+            curr = nextTemp;
         }
-        // 而相互的距离又是没有被赋值的，即数组初始化后0的个数
-        // 计数0的个数
-        int maxZeroCount = 0;
-        int zeroCount = 0;
-        boolean isFirstNotZero = false;
-        for (int j : mapArr) {
-            if (j != 0) {
-                isFirstNotZero = true;
+        return prev;
+    }
+
+    /**
+     *
+     * @param l1 head所在的链表，同时也是切割后第一部分链表
+     * @param l2 切割后第二部分链表
+     */
+    private void merge(ListNode l1, ListNode l2) {
+        while (l1 != null) {
+            ListNode n1 = l1.next, n2 = l2.next;
+            l1.next = l2;
+            if (n1 == null) {
+                break;
             }
-            if (isFirstNotZero && j == 0) {
-                zeroCount++;
-            } else {
-                maxZeroCount = Math.max(maxZeroCount, zeroCount);
-                zeroCount = 0;
-            }
+            l2.next = n1;
+            l1 = n1;
+            l2 = n2;
         }
-        // 相邻差值为映射后0的个数+1
-        return maxZeroCount+1;
     }
 ```
 
