@@ -24,7 +24,7 @@ Here are some ideas to get you started:
 
 If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/resume-it)! Thank you!😄
 
-## Resent Practice
+## Recent Practice
 [143. Reorder List](https://leetcode-cn.com/problems/reorder-list/)
 
 ### Solution:
