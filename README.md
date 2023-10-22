@@ -22,7 +22,7 @@ Here are some ideas to get you started:
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=istarwyh&hide=css&layout=compact)](https://github.com/anuraghazra/github-readme-stats)[![wangyihui's github stats](https://github-readme-stats.vercel.app/api?username=istarwyh "![wangyihui's github stats")](https://github.com/istarwyh)
 
-If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/resume-it)! Thank you!😄
+If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/resume-it) and [my blog](www.wangyihui.link)! Thank you!😄
 
 ## Recent Practice
 [143. Reorder List](https://leetcode-cn.com/problems/reorder-list/)
