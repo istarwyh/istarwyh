@@ -1,19 +1,5 @@
 ### Hi! Nice to meet you! 👋
 
-<!--
-**istarwyh/istarwyh** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
 
 
 
@@ -24,10 +10,13 @@ Here are some ideas to get you started:
 
 If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/resume-it) and [my blog](https://xiaohui.cool)! Thank you!😄
 
+I'm currently exploring what it means to be "Farming in the Cyber World", a concept I delve into more on [my blog](https://xiaohui.cool/Farming-in-the-cyber-world). This journey involves cultivating digital projects and ideas. I'm also thrilled that my `writingHelper` project has grown to serve over 12,000 users!
+
 ## Recent Practice
 [143. Reorder List](https://leetcode-cn.com/problems/reorder-list/)
 
-### Solution:
+<details>
+<summary>Click to see Java Solution & Tests for 143. Reorder List</summary>
 
 ```java
 
@@ -110,7 +99,7 @@ If you want to know more about me, welcome to see [my online resume](https://ist
         }
     }
 ```
-### Test
+
 ```java
 class LinkedListTest {
 
@@ -228,6 +217,9 @@ class LinkedListTest {
     }
 }
 ```
+
+</details>
+
 
 <p align="center"> 
   Visitor count<br>
