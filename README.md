@@ -1,16 +1,8 @@
 ### Hi! Nice to meet you! 👋
 
-
-
-
-## About Me
-
-
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=istarwyh&hide=css&layout=compact)](https://github.com/anuraghazra/github-readme-stats)[![wangyihui's github stats](https://github-readme-stats.vercel.app/api?username=istarwyh "![wangyihui's github stats")](https://github.com/istarwyh)
-
 If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/resume-it) and [my blog](https://xiaohui.cool)! Thank you!😄
 
-I'm currently exploring what it means to be "Farming in the Cyber World", a concept I delve into more on [my blog](https://xiaohui.cool/Farming-in-the-cyber-world). This journey involves cultivating digital projects and ideas. I'm also thrilled that my `writingHelper` project has grown to serve over 12,000 users!
+I'm currently exploring what it means to be "Farming in the Cyber World", a concept I delve into more on [my blog](https://xiaohui.cool/Farming-in-the-cyber-world). This journey involves cultivating digital projects and ideas. I'm also thrilled that my `writingHelper` project has grown to serve over 15,000 users!
 
 ## Recent Practice
 [143. Reorder List](https://leetcode-cn.com/problems/reorder-list/)
