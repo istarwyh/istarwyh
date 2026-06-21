@@ -1,213 +1,50 @@
-### Hi! Nice to meet you! 👋
+<div align="center">
 
-If you want to know more about me, welcome to see [my online resume](https://istarwyh.github.io/resume-it) and [my blog](https://xiaohui.cool)! Thank you!😄
+# Hi, I'm Yihui Wang
 
-I'm currently exploring what it means to be "Farming in the Cyber World", a concept I delve into more on [my blog](https://xiaohui.cool/Farming-in-the-cyber-world). This journey involves cultivating digital projects and ideas. I'm also thrilled that my `writingHelper` project has grown to serve over 15,000 users!
+**Building practical AI tools, developer workflows, and small systems for "farming in the cyber world".**
 
-## Recent Practice
-[143. Reorder List](https://leetcode-cn.com/problems/reorder-list/)
+[![Resume](https://img.shields.io/badge/Resume-istarwyh.github.io-0A66C2?style=for-the-badge&logo=readthedocs&logoColor=white)](https://istarwyh.github.io/resume-it)
+[![Blog](https://img.shields.io/badge/Blog-xiaohui.cool-111827?style=for-the-badge&logo=rss&logoColor=white)](https://xiaohui.cool)
+[![GitHub](https://img.shields.io/badge/GitHub-istarwyh-24292F?style=for-the-badge&logo=github&logoColor=white)](https://github.com/istarwyh)
 
-<details>
-<summary>Click to see Java Solution & Tests for 143. Reorder List</summary>
+</div>
 
-```java
+## About
 
-    public void reorderList(ListNode head) {
-        if (head == null || head.next == null)
-            return;
-        ListNode splitNode = getFirstPartEndNodeAsSplitNode(head);
-        ListNode secondPartStartNode = splitNode.next;
-        ListNode l1 = getFirstPartHeadNode(head,splitNode);
-        ListNode l2 = getSecondPartHeadNode(secondPartStartNode);
-        merge(l1, l2);
-    }
+I'm exploring what it means to be [**Farming in the Cyber World**](https://xiaohui.cool/Farming-in-the-cyber-world): cultivating useful digital projects, workflows, and ideas over time.
 
-    /**
-     *将要反转的链表看为两部分,返回第一部分尾结点
-     */
-    public ListNode getFirstPartEndNodeAsSplitNode(ListNode head){
-        ListNode prev = null, slow = head, fast = head;
-        while (fast != null && fast.next != null) {
-            prev = slow;
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-        return prev;
-    }
+- Working on AI-assisted writing, agent tooling, and developer productivity.
+- Built `writingHelper`, which has served **15,000+ users**.
+- Interested in LLM applications, MCP tooling, Java/TypeScript/Python systems, and thoughtful product design.
+- Based around PKU and Beijing.
 
-    /**
-     * 切割得到第一部分链表
-     * @param head 链表原始头结点
-     * @param endNode 切割后第一部分链表尾结点
-     * @return ListNode
-     */
-    public ListNode getFirstPartHeadNode(ListNode head, ListNode endNode) {
-        endNode.next = null;
-        return head;
-    }
+## Featured Work
 
-    public ListNode getSecondPartHeadNode(ListNode head) {
-        if (head == null)
-            return null;
-        ListNode prev = null;
-        ListNode cur = head;
-        while (cur != null) {
-            final ListNode next = cur.next;
+| Project | What it does | Stack |
+| --- | --- | --- |
+| [writingHelper](https://github.com/istarwyh/writingHelper) | Get Grammarly and Linggle-like writing assistance in one workflow. | HTML, browser tooling |
+| [mcpadvisor](https://github.com/istarwyh/mcpadvisor) | Helps people find and install the right MCP server for their needs. | TypeScript, MCP |
+| [ai-speeds](https://github.com/istarwyh/ai-speeds) | A simple proxy that helps Claude Code work with OpenRouter or DeepSeek. | TypeScript |
+| [junit-extensions](https://github.com/istarwyh/junit-extensions) | JUnit 5 extensions and test utilities. | Java |
 
-            pointToPreNode(prev, cur);
+## Current Focus
 
-            prev = cur;
-            cur = next;
-        }
-        return prev;
-    }
+- Turning rough AI workflows into reliable, reusable tools.
+- Studying context engineering, memory, and agent orchestration.
+- Writing about the habits, interfaces, and infrastructure behind personal productivity.
 
-    private void pointToPreNode(ListNode prev, ListNode cur) {
-        cur.next = prev;
-    }
+## GitHub Snapshot
 
-    /**
-     * 交替相连接结点,新链表 以 l1 为头结点
-     * @param l1 head所在的链表，同时也是切割后第一部分链表
-     * @param l2 切割后第二部分链表
-     */
-    public void merge(ListNode l1, ListNode l2) {
-        while (l1 != null && l2 != null) {
-            final ListNode l1Next = l1.next, l2Next = l2.next;
-            jointInTurn(l1, l2, l1Next,l2Next);
+<div align="center">
 
-            l1 = l1Next;
-            l2 = l2Next;
-        }
-    }
+<img height="165" alt="Yihui's GitHub stats" src="https://github-readme-stats.vercel.app/api?username=istarwyh&show_icons=true&hide_border=true&theme=transparent&rank_icon=github" />
+<img height="165" alt="Yihui's top languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=istarwyh&layout=compact&hide_border=true&theme=transparent" />
 
-    private void jointInTurn(ListNode l1, ListNode l2, ListNode l1Next,ListNode l2Next) {
-        l1.next = l2;
-        // when l1Next is null, we don't need to joint them in turn just pointing to end node -- l2Next
-        if(l1Next == null){
-            l2.next = l2Next;
-        }else {
-            l2.next = l1Next;
-        }
-    }
-```
+</div>
 
-```java
-class LinkedListTest {
+## Elsewhere
 
-    private LinkedList linkedList;
-    private ListNode node1;
-
-    private ListNode oddNodeListHead;
-    private ListNode evenNodeListHead;
-
-    @BeforeEach
-    void setUp() {
-        linkedList = new LinkedList();
-        node1 = new ListNode(1);
-        oddNodeListHead = ListNode.createNodeList(1, 2, 3, 4, 5);
-        evenNodeListHead = ListNode.createNodeList(1, 2, 3, 4);
-    }
-
-    @Nested
-    class ReorderList{
-
-        /**
-         * Actually it is difficult to verify do nothing in {@link  LinkedList#reorderList(ListNode)}
-         * when we don't know what exact implement in it
-         */
-        @Test
-        void should_do_nothing_when_input_head_is_null() {
-            linkedList.reorderList(null);
-        }
-
-        @Test
-        void should_return_the_same_when_input_one_node(){
-            ListNode input = node1;
-            linkedList.reorderList(input);
-            assertSame(node1,input);
-        }
-
-        @Test
-        void should_pass_when_the_length_is_odd(){
-            linkedList.reorderList(oddNodeListHead);
-
-            assertEquals("{ val:1  next:{ val:5  next:{ val:2  next:{ val:4  next:{ val:3  next:null}}}}}",
-                    oddNodeListHead.toString());
-        }
-
-        @Test
-        void should_pass_when_the_length_is_even(){
-            linkedList.reorderList(evenNodeListHead);
-
-            assertEquals("{ val:1  next:{ val:4  next:{ val:2  next:{ val:3  next:null}}}}",
-                    evenNodeListHead.toString());
-        }
-
-        @Nested
-        class GetFirstPartEndNodeAsSplitNode{
-
-            @Test
-            void should_get_first_part_end_node_as_split_node_when_the_length_is_odd(){
-                ListNode splitNode = linkedList.getFirstPartEndNodeAsSplitNode(oddNodeListHead);
-                assertEquals("{ val:2  next:{ val:3  next:{ val:4  next:{ val:5  next:null}}}}",splitNode.toString());
-            }
-
-            @Test
-            void should_get_first_part_end_node_as_split_node_when_the_length_is_even(){
-                ListNode splitNode = linkedList.getFirstPartEndNodeAsSplitNode(evenNodeListHead);
-                assertEquals("{ val:2  next:{ val:3  next:{ val:4  next:null}}}",splitNode.toString());
-            }
-        }
-
-        @Nested
-        class GetFirstPart{
-            @Test
-            void should_cult_to_first_part(){
-                ListNode firstPart = linkedList.getFirstPartHeadNode(oddNodeListHead, oddNodeListHead.next);
-                assertEquals("{ val:1  next:{ val:2  next:null}}",firstPart.toString());
-            }
-        }
-
-        @Nested
-        class GetSecondPart {
-
-            @Test
-            void should_directly_reverse_odd_list(){
-                ListNode listNode = linkedList.getSecondPartHeadNode(oddNodeListHead);
-                assertEquals("{ val:5  next:{ val:4  next:{ val:3  next:{ val:2  next:{ val:1  next:null}}}}}",
-                        listNode.toString());
-            }
-
-            @Test
-            void should_directly_reverse_even_list(){
-                ListNode listNode = linkedList.getSecondPartHeadNode(evenNodeListHead);
-                assertEquals("{ val:4  next:{ val:3  next:{ val:2  next:{ val:1  next:null}}}}",
-                        listNode.toString());
-            }
-        }
-
-        @Nested
-        class Merge{
-
-            @Test
-            void should_joint_two_node_List_in_turn_with_order_even_odd(){
-                linkedList.merge(evenNodeListHead,oddNodeListHead);
-                assertEquals("{ val:1  next:{ val:1  next:{ val:2  next:{ val:2  next:{ val:3  " +
-                                "next:{ val:3  next:{ val:4  next:{ val:4  next:{ val:5  next:null}}}}}}}}}",
-                        evenNodeListHead.toString());
-            }
-
-            @Test
-            void should_joint_two_node_List_in_turn_with_order_odd_even(){
-                linkedList.merge(oddNodeListHead,evenNodeListHead);
-                assertEquals("{ val:1  next:{ val:1  next:{ val:2  next:{ val:2  next:{ val:3  " +
-                                "next:{ val:3  next:{ val:4  next:{ val:4  next:{ val:5  next:null}}}}}}}}}",
-                        oddNodeListHead.toString());
-            }
-        }
-    }
-}
-```
-
-</details>
+- Blog: [xiaohui.cool](https://xiaohui.cool)
+- Resume: [istarwyh.github.io/resume-it](https://istarwyh.github.io/resume-it)
+- GitHub: [github.com/istarwyh](https://github.com/istarwyh)
