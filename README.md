@@ -51,11 +51,11 @@ I write at [xiaohui.cool](https://xiaohui.cool), a public digital garden about A
 ## Latest Technical Writing
 
 <!-- LATEST-WRITING:START -->
+- [AI 系统如何进化：生成器、评估器、优化器与漫剧生产链路](https://xiaohui.cool/program/llm/ai-system-evolution-generator-evaluator-optimizer)
 - [从对话到交互式音画同步动画讲解：一次保险产品介绍 AIGC 链路的工程化实践](https://xiaohui.cool/program/llm/%E4%BB%8E%E5%AF%B9%E8%AF%9D%E5%88%B0%E4%BA%A4%E4%BA%92%E5%BC%8F%E9%9F%B3%E7%94%BB%E5%90%8C%E6%AD%A5%E5%8A%A8%E7%94%BB%E8%AE%B2%E8%A7%A3%EF%BC%9A%E4%B8%80%E6%AC%A1%E4%BF%9D%E9%99%A9%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D-AIGC-%E9%93%BE%E8%B7%AF%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%AE%9E%E8%B7%B5)
 - [保险搜品能力工程架构：从 Agent Tool 到可交互货架](https://xiaohui.cool/program/llm/%E4%BF%9D%E9%99%A9%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2-Agent-%E5%B7%A5%E7%A8%8B%E6%9E%B6%E6%9E%84%EF%BC%9A%E4%BB%8E%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E9%9C%80%E6%B1%82%E5%88%B0%E5%8F%AF%E4%BA%A4%E4%BA%92%E8%B4%A7%E6%9E%B6)
 - [如何科学评测 Agent 生成的文本报告：从评分体系到评测器的元评测](https://xiaohui.cool/program/llm/%E5%A6%82%E4%BD%95%E7%A7%91%E5%AD%A6%E8%AF%84%E6%B5%8B-Agent-%E7%94%9F%E6%88%90%E7%9A%84%E6%96%87%E6%9C%AC%E6%8A%A5%E5%91%8A%EF%BC%9A%E4%BB%8E%E8%AF%84%E5%88%86%E4%BD%93%E7%B3%BB%E5%88%B0%E8%AF%84%E6%B5%8B%E5%99%A8%E7%9A%84%E5%85%83%E8%AF%84%E6%B5%8B)
 - [从 RAG 到 Deep Research：复杂业务报告生成的上下文工程](https://xiaohui.cool/program/llm/%E4%BB%8ERAG%E5%88%B0DeepResearch%EF%BC%9A%E5%A4%8D%E6%9D%82%E4%B8%9A%E5%8A%A1%E6%8A%A5%E5%91%8A%E7%94%9F%E6%88%90%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B7%A5%E7%A8%8B)
-- [Requirements Analysis](https://xiaohui.cool/program/full-stream/Requirements-Analysis)
 <!-- LATEST-WRITING:END -->
 
 ## Current Focus
