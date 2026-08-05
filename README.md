@@ -51,11 +51,11 @@ I write at [xiaohui.cool](https://xiaohui.cool), a public digital garden about A
 ## Latest Technical Writing
 
 <!-- LATEST-WRITING:START -->
+- [AI 应用公司的利润从哪里来](https://xiaohui.cool/program/llm/AI-%E5%BA%94%E7%94%A8%E5%85%AC%E5%8F%B8%E7%9A%84%E5%88%A9%E6%B6%A6%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5)
+- [当我第N次看到 AI 生成的「紫色渐变背景」时，我决定做点什么](https://xiaohui.cool/program/bot/%E5%BD%93%E6%88%91%E7%AC%ACN%E6%AC%A1%E7%9C%8B%E5%88%B0-AI-%E7%94%9F%E6%88%90%E7%9A%84%E3%80%8C%E7%B4%AB%E8%89%B2%E6%B8%90%E5%8F%98%E8%83%8C%E6%99%AF%E3%80%8D%E6%97%B6%EF%BC%8C%E6%88%91%E5%86%B3%E5%AE%9A%E5%81%9A%E7%82%B9%E4%BB%80%E4%B9%88)
 - [如何打造可靠的 Agent 系统](https://xiaohui.cool/program/practices/%E5%A6%82%E4%BD%95%E6%89%93%E9%80%A0%E5%8F%AF%E9%9D%A0%E7%9A%84Agent%E7%B3%BB%E7%BB%9F)
 - [AI 系统如何进化：生成器、评估器、优化器的关系](https://xiaohui.cool/program/llm/ai-system-evolution-generator-evaluator-optimizer)
 - [对模型的迷思](https://xiaohui.cool/program/llm/%E5%AF%B9%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%BF%B7%E6%80%9D)
-- [相比层出不穷的 Agent 框架，不变的 Agent Protocol 是什么](https://xiaohui.cool/program/llm/%E7%9B%B8%E6%AF%94%E5%B1%82%E5%87%BA%E4%B8%8D%E7%A9%B7%E7%9A%84-Agent-%E6%A1%86%E6%9E%B6%EF%BC%8C%E4%B8%8D%E5%8F%98%E7%9A%84-Agent-Protocol-%E6%98%AF%E4%BB%80%E4%B9%88)
-- [从对话到交互式音画同步动画讲解：一次保险产品介绍 AIGC 链路的工程化实践](https://xiaohui.cool/program/llm/%E4%BB%8E%E5%AF%B9%E8%AF%9D%E5%88%B0%E4%BA%A4%E4%BA%92%E5%BC%8F%E9%9F%B3%E7%94%BB%E5%90%8C%E6%AD%A5%E5%8A%A8%E7%94%BB%E8%AE%B2%E8%A7%A3%EF%BC%9A%E4%B8%80%E6%AC%A1%E4%BF%9D%E9%99%A9%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D-AIGC-%E9%93%BE%E8%B7%AF%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%AE%9E%E8%B7%B5)
 <!-- LATEST-WRITING:END -->
 
 ## Current Focus
