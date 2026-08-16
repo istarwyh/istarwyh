@@ -51,11 +51,11 @@ I write at [xiaohui.cool](https://xiaohui.cool), a public digital garden about A
 ## Latest Technical Writing
 
 <!-- LATEST-WRITING:START -->
+- [用 Harbor 构建稳定的 Agent 评测与进化环境](https://xiaohui.cool/program/llm/%E7%94%A8-Harbor-%E6%9E%84%E5%BB%BA%E7%A8%B3%E5%AE%9A%E7%9A%84-Agent-%E8%AF%84%E6%B5%8B%E4%B8%8E%E8%BF%9B%E5%8C%96%E7%8E%AF%E5%A2%83)
 - [从独热编码到生成式预训练模型](https://xiaohui.cool/program/llm/Transformer)
 - [vector-database](https://xiaohui.cool/program/llm/vector-database)
 - [相比层出不穷的 Agent 框架，不变的 Agent Protocol 是什么](https://xiaohui.cool/program/llm/%E7%9B%B8%E6%AF%94%E5%B1%82%E5%87%BA%E4%B8%8D%E7%A9%B7%E7%9A%84-Agent-%E6%A1%86%E6%9E%B6%EF%BC%8C%E4%B8%8D%E5%8F%98%E7%9A%84-Agent-Protocol-%E6%98%AF%E4%BB%80%E4%B9%88)
 - [AI 应用公司的利润从哪里来](https://xiaohui.cool/program/llm/AI-%E5%BA%94%E7%94%A8%E5%85%AC%E5%8F%B8%E7%9A%84%E5%88%A9%E6%B6%A6%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5)
-- [当我第N次看到 AI 生成的「紫色渐变背景」时，我决定做点什么](https://xiaohui.cool/program/bot/%E5%BD%93%E6%88%91%E7%AC%ACN%E6%AC%A1%E7%9C%8B%E5%88%B0-AI-%E7%94%9F%E6%88%90%E7%9A%84%E3%80%8C%E7%B4%AB%E8%89%B2%E6%B8%90%E5%8F%98%E8%83%8C%E6%99%AF%E3%80%8D%E6%97%B6%EF%BC%8C%E6%88%91%E5%86%B3%E5%AE%9A%E5%81%9A%E7%82%B9%E4%BB%80%E4%B9%88)
 <!-- LATEST-WRITING:END -->
 
 ## Current Focus
