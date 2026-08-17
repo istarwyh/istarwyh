@@ -51,11 +51,11 @@ I write at [xiaohui.cool](https://xiaohui.cool), a public digital garden about A
 ## Latest Technical Writing
 
 <!-- LATEST-WRITING:START -->
-- [用 Harbor 构建稳定的 Agent 评测与进化环境](https://xiaohui.cool/program/llm/%E7%94%A8-Harbor-%E6%9E%84%E5%BB%BA%E7%A8%B3%E5%AE%9A%E7%9A%84-Agent-%E8%AF%84%E6%B5%8B%E4%B8%8E%E8%BF%9B%E5%8C%96%E7%8E%AF%E5%A2%83)
-- [从独热编码到生成式预训练模型](https://xiaohui.cool/program/llm/Transformer)
-- [vector-database](https://xiaohui.cool/program/llm/vector-database)
-- [相比层出不穷的 Agent 框架，不变的 Agent Protocol 是什么](https://xiaohui.cool/program/llm/%E7%9B%B8%E6%AF%94%E5%B1%82%E5%87%BA%E4%B8%8D%E7%A9%B7%E7%9A%84-Agent-%E6%A1%86%E6%9E%B6%EF%BC%8C%E4%B8%8D%E5%8F%98%E7%9A%84-Agent-Protocol-%E6%98%AF%E4%BB%80%E4%B9%88)
-- [AI 应用公司的利润从哪里来](https://xiaohui.cool/program/llm/AI-%E5%BA%94%E7%94%A8%E5%85%AC%E5%8F%B8%E7%9A%84%E5%88%A9%E6%B6%A6%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5)
+- [DeepSeek Harness：把 Agent Runtime 拆成一棵可热插拔的插件树](https://xiaohui.cool/program/llm/deepseek-harness-cordis-architecture)
+- [从 Harbor Hub 到 Agent 能力认证市场](https://xiaohui.cool/program/llm/%E4%BB%8E-Harbor-Hub-%E5%88%B0-Agent-%E8%83%BD%E5%8A%9B%E8%AE%A4%E8%AF%81%E5%B8%82%E5%9C%BA)
+- [什么是Harbor ？ 如何打包评测环境，稳定评测 Agent](https://xiaohui.cool/program/llm/%E4%BB%8E-Hello-World-%E5%85%A5%E9%97%A8-Harbor%EF%BC%9A%E5%A6%82%E4%BD%95%E7%A8%B3%E5%AE%9A%E5%9C%B0%E8%A1%A1%E9%87%8F-Agent)
+- [用 Harbor 构建稳定的 Agent 评测、晋级与发布环境](https://xiaohui.cool/program/llm/%E7%94%A8-Harbor-%E6%9E%84%E5%BB%BA%E7%A8%B3%E5%AE%9A%E7%9A%84-Agent-%E8%AF%84%E6%B5%8B%E4%B8%8E%E8%BF%9B%E5%8C%96%E7%8E%AF%E5%A2%83)
+- [Generative UI 的前后端用什么事件协议](https://xiaohui.cool/program/llm/Generative-UI-%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%8B%E4%BB%B6%E5%8D%8F%E8%AE%AE)
 <!-- LATEST-WRITING:END -->
 
 ## Current Focus
