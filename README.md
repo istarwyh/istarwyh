@@ -51,7 +51,7 @@ I write at [xiaohui.cool](https://xiaohui.cool), a public digital garden about A
 ## Latest Technical Writing
 
 <!-- LATEST-WRITING:START -->
-- [DeepSeek Harness：把 Agent Runtime 拆成一棵可热插拔的插件树](https://xiaohui.cool/program/llm/deepseek-harness-cordis-architecture)
+- [DeepSeek Harness：让每个人拥有自己的 AI 工作台](https://xiaohui.cool/program/llm/deepseek-harness-cordis-architecture)
 - [从 Harbor Hub 到 Agent 能力认证市场](https://xiaohui.cool/program/llm/%E4%BB%8E-Harbor-Hub-%E5%88%B0-Agent-%E8%83%BD%E5%8A%9B%E8%AE%A4%E8%AF%81%E5%B8%82%E5%9C%BA)
 - [什么是Harbor ？ 如何打包评测环境，稳定评测 Agent](https://xiaohui.cool/program/llm/%E4%BB%8E-Hello-World-%E5%85%A5%E9%97%A8-Harbor%EF%BC%9A%E5%A6%82%E4%BD%95%E7%A8%B3%E5%AE%9A%E5%9C%B0%E8%A1%A1%E9%87%8F-Agent)
 - [用 Harbor 构建稳定的 Agent 评测、晋级与发布环境](https://xiaohui.cool/program/llm/%E7%94%A8-Harbor-%E6%9E%84%E5%BB%BA%E7%A8%B3%E5%AE%9A%E7%9A%84-Agent-%E8%AF%84%E6%B5%8B%E4%B8%8E%E8%BF%9B%E5%8C%96%E7%8E%AF%E5%A2%83)
