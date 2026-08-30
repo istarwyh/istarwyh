@@ -51,11 +51,11 @@ I write at [xiaohui.cool](https://xiaohui.cool), a public digital garden about A
 ## Latest Technical Writing
 
 <!-- LATEST-WRITING:START -->
-- [AgenticOne 产品召回：JSON 分发与内存全量过滤](https://xiaohui.cool/program/llm/AgenticOne-%E4%BA%A7%E5%93%81%E5%8F%AC%E5%9B%9E%EF%BC%9AJSON-%E5%88%86%E5%8F%91%E4%B8%8E%E5%86%85%E5%AD%98%E5%85%A8%E9%87%8F%E8%BF%87%E6%BB%A4)
+- [RAG 工程实践：QQ 产品召回与 QA 文档导航](https://xiaohui.cool/program/llm/RAG-%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%EF%BC%9AQQ-%E4%BA%A7%E5%93%81%E5%8F%AC%E5%9B%9E%E4%B8%8E-QA-%E6%96%87%E6%A1%A3%E5%AF%BC%E8%88%AA)
+- [保险产品解读报告系统：Multi-Agent 生产链路与评测闭环](https://xiaohui.cool/program/llm/%E4%BF%9D%E9%99%A9%E4%BA%A7%E5%93%81%E8%A7%A3%E8%AF%BB%E6%8A%A5%E5%91%8A%E7%B3%BB%E7%BB%9F%EF%BC%9AMulti-Agent-%E7%94%9F%E4%BA%A7%E9%93%BE%E8%B7%AF%E4%B8%8E%E8%AF%84%E6%B5%8B%E9%97%AD%E7%8E%AF)
 - [保险搜品能力工程架构：从 Agent Tool 到可交互货架](https://xiaohui.cool/program/llm/%E4%BF%9D%E9%99%A9%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2-Agent-%E5%B7%A5%E7%A8%8B%E6%9E%B6%E6%9E%84%EF%BC%9A%E4%BB%8E%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E9%9C%80%E6%B1%82%E5%88%B0%E5%8F%AF%E4%BA%A4%E4%BA%92%E8%B4%A7%E6%9E%B6)
+- [AgenticOne 产品召回：JSON 分发与内存全量过滤](https://xiaohui.cool/program/llm/AgenticOne-%E4%BA%A7%E5%93%81%E5%8F%AC%E5%9B%9E%EF%BC%9AJSON-%E5%88%86%E5%8F%91%E4%B8%8E%E5%86%85%E5%AD%98%E5%85%A8%E9%87%8F%E8%BF%87%E6%BB%A4)
 - [Agent Checkpoint 与 Trajectory 的分层存储](https://xiaohui.cool/program/llm/agent-checkpoint-trajectory-storage)
-- [DeepSeek Harness：让每个人拥有自己的 AI 工作台](https://xiaohui.cool/program/llm/deepseek-harness-cordis-architecture)
-- [LangGraph State 的生命周期](https://xiaohui.cool/program/llm/LangGraph-State-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F)
 <!-- LATEST-WRITING:END -->
 
 ## Current Focus
