@@ -51,11 +51,11 @@ I write at [xiaohui.cool](https://xiaohui.cool), a public digital garden about A
 ## Latest Technical Writing
 
 <!-- LATEST-WRITING:START -->
-- [保险推品中的语义匹配：从产品池复用到领域微调](https://xiaohui.cool/program/llm/embedding-training-for-qq-matching)
-- [RAG 工程实践：QQ 产品召回与 QA 文档导航](https://xiaohui.cool/program/llm/RAG-%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%EF%BC%9AQQ-%E4%BA%A7%E5%93%81%E5%8F%AC%E5%9B%9E%E4%B8%8E-QA-%E6%96%87%E6%A1%A3%E5%AF%BC%E8%88%AA)
-- [向量为什么能够表示语义](https://xiaohui.cool/program/llm/Transformer)
-- [保险产品解读报告系统：Multi-Agent 生产链路与评测闭环](https://xiaohui.cool/program/llm/%E4%BF%9D%E9%99%A9%E4%BA%A7%E5%93%81%E8%A7%A3%E8%AF%BB%E6%8A%A5%E5%91%8A%E7%B3%BB%E7%BB%9F%EF%BC%9AMulti-Agent-%E7%94%9F%E4%BA%A7%E9%93%BE%E8%B7%AF%E4%B8%8E%E8%AF%84%E6%B5%8B%E9%97%AD%E7%8E%AF)
-- [保险搜品能力工程架构：从 Agent Tool 到可交互货架](https://xiaohui.cool/program/llm/%E4%BF%9D%E9%99%A9%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2-Agent-%E5%B7%A5%E7%A8%8B%E6%9E%B6%E6%9E%84%EF%BC%9A%E4%BB%8E%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E9%9C%80%E6%B1%82%E5%88%B0%E5%8F%AF%E4%BA%A4%E4%BA%92%E8%B4%A7%E6%9E%B6)
+- [MCP 2026 演进：Apps、无状态核心与 AAIF 统一](https://xiaohui.cool/program/llm/MCP-2026-%E6%BC%94%E8%BF%9B%EF%BC%9AApps%E3%80%81%E6%97%A0%E7%8A%B6%E6%80%81%E6%A0%B8%E5%BF%83%E4%B8%8E-AAIF-%E7%BB%9F%E4%B8%80)
+- [从指令到意图：AI Agent 架构范式演进史](https://xiaohui.cool/program/llm/%E4%BB%8E%E6%8C%87%E4%BB%A4%E5%88%B0%E6%84%8F%E5%9B%BE%EF%BC%9AAI-Agent-%E6%9E%B6%E6%9E%84%E8%8C%83%E5%BC%8F%E6%BC%94%E8%BF%9B%E5%8F%B2)
+- [AI 系统如何进化：生成器、评估器、优化器的关系](https://xiaohui.cool/program/llm/ai-system-evolution-generator-evaluator-optimizer)
+- [在能力边界上造题：可验证后训练的原理与实践](https://xiaohui.cool/program/llm/%E5%9C%A8%E8%83%BD%E5%8A%9B%E8%BE%B9%E7%95%8C%E4%B8%8A%E9%80%A0%E9%A2%98%EF%BC%9A%E5%8F%AF%E9%AA%8C%E8%AF%81%E5%90%8E%E8%AE%AD%E7%BB%83%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5)
+- [用 Harbor 构建稳定的 Agent 评测、晋级与发布环境](https://xiaohui.cool/program/llm/%E7%94%A8-Harbor-%E6%9E%84%E5%BB%BA%E7%A8%B3%E5%AE%9A%E7%9A%84-Agent-%E8%AF%84%E6%B5%8B%E4%B8%8E%E8%BF%9B%E5%8C%96%E7%8E%AF%E5%A2%83)
 <!-- LATEST-WRITING:END -->
 
 ## Current Focus
