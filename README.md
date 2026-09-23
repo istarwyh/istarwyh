@@ -51,11 +51,11 @@ I write at [xiaohui.cool](https://xiaohui.cool), a public digital garden about A
 ## Latest Technical Writing
 
 <!-- LATEST-WRITING:START -->
+- [向量模型与大语言模型怎样完成预训练](https://xiaohui.cool/program/llm/embedding-vs-llm-pretraining)
+- [向量为什么能够表示语义](https://xiaohui.cool/program/llm/Transformer)
 - [MCP 2026 演进：Apps、无状态核心与 AAIF 统一](https://xiaohui.cool/program/llm/MCP-2026-%E6%BC%94%E8%BF%9B%EF%BC%9AApps%E3%80%81%E6%97%A0%E7%8A%B6%E6%80%81%E6%A0%B8%E5%BF%83%E4%B8%8E-AAIF-%E7%BB%9F%E4%B8%80)
 - [从指令到意图：AI Agent 架构范式演进史](https://xiaohui.cool/program/llm/%E4%BB%8E%E6%8C%87%E4%BB%A4%E5%88%B0%E6%84%8F%E5%9B%BE%EF%BC%9AAI-Agent-%E6%9E%B6%E6%9E%84%E8%8C%83%E5%BC%8F%E6%BC%94%E8%BF%9B%E5%8F%B2)
 - [AI 系统如何进化：生成器、评估器、优化器的关系](https://xiaohui.cool/program/llm/ai-system-evolution-generator-evaluator-optimizer)
-- [在能力边界上造题：可验证后训练的原理与实践](https://xiaohui.cool/program/llm/%E5%9C%A8%E8%83%BD%E5%8A%9B%E8%BE%B9%E7%95%8C%E4%B8%8A%E9%80%A0%E9%A2%98%EF%BC%9A%E5%8F%AF%E9%AA%8C%E8%AF%81%E5%90%8E%E8%AE%AD%E7%BB%83%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5)
-- [用 Harbor 构建稳定的 Agent 评测、晋级与发布环境](https://xiaohui.cool/program/llm/%E7%94%A8-Harbor-%E6%9E%84%E5%BB%BA%E7%A8%B3%E5%AE%9A%E7%9A%84-Agent-%E8%AF%84%E6%B5%8B%E4%B8%8E%E8%BF%9B%E5%8C%96%E7%8E%AF%E5%A2%83)
 <!-- LATEST-WRITING:END -->
 
 ## Current Focus
