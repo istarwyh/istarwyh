@@ -51,11 +51,11 @@ I write at [xiaohui.cool](https://xiaohui.cool), a public digital garden about A
 ## Latest Technical Writing
 
 <!-- LATEST-WRITING:START -->
+- [对模型的迷思](https://xiaohui.cool/program/llm/%E5%AF%B9%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%BF%B7%E6%80%9D)
 - [Jev 可能怎样只判断、不说话](https://xiaohui.cool/program/llm/jev-decision-model-architecture)
 - [向量模型与大语言模型怎样完成预训练](https://xiaohui.cool/program/llm/embedding-vs-llm-pretraining)
 - [向量为什么能够表示语义](https://xiaohui.cool/program/llm/Transformer)
 - [MCP 2026 演进：Apps、无状态核心与 AAIF 统一](https://xiaohui.cool/program/llm/MCP-2026-%E6%BC%94%E8%BF%9B%EF%BC%9AApps%E3%80%81%E6%97%A0%E7%8A%B6%E6%80%81%E6%A0%B8%E5%BF%83%E4%B8%8E-AAIF-%E7%BB%9F%E4%B8%80)
-- [从指令到意图：AI Agent 架构范式演进史](https://xiaohui.cool/program/llm/%E4%BB%8E%E6%8C%87%E4%BB%A4%E5%88%B0%E6%84%8F%E5%9B%BE%EF%BC%9AAI-Agent-%E6%9E%B6%E6%9E%84%E8%8C%83%E5%BC%8F%E6%BC%94%E8%BF%9B%E5%8F%B2)
 <!-- LATEST-WRITING:END -->
 
 ## Current Focus
